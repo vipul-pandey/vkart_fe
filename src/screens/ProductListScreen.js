@@ -1,13 +1,12 @@
-import React, { useContext, useEffect, useReducer } from 'react';
 import axios from 'axios';
+import React, { useContext, useEffect, useReducer } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import { toast } from 'react-toastify';
-import { Store } from '../Store';
+import { Row, Col, Button } from 'react-bootstrap';
+
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import { Store } from '../Store';
 import { getError } from '../utils';
 
 const reducer = (state, action) => {

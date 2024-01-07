@@ -1,4 +1,4 @@
-import Spinner from 'react-bootstrap/Spinner';
+import { Spinner } from 'react-bootstrap';
 
 export default function LoadingBox() {
   return (
