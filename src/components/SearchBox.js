@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, InputGroup, FormControl } from 'react-bootstrap';
 
-export default function SearchBox() {
+const SearchBox = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
   const submitHandler = (e) => {
     e.preventDefault();
     navigate(query ? `/search/?query=${query}` : '/search');
   };
-
   return (
     <Form className="d-flex custom-form" onSubmit={submitHandler}>
       <InputGroup>
@@ -28,4 +27,6 @@ export default function SearchBox() {
       </InputGroup>
     </Form>
   );
-}
+};
+
+export default SearchBox;

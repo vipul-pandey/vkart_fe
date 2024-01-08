@@ -12,6 +12,23 @@ body {
 main {
   flex: 1;
 }
+.mainContainer {
+  margin-top: 5rem !important;
+}
+.dropdown-menu.show {
+  right: 0;
+  left: auto;
+}
+.nav-item {
+  list-style: none;
+  word-wrap: break-word;
+}
+.nav-item:hover {
+  background-color: #d3d4d5;
+}
+.link-item {
+  padding: 10px 20px;
+}
 .btn-primary,
 .btn-outline-primary {
   background-color: #f0c040;
@@ -62,12 +79,7 @@ main {
   font-weight: bold;
 }
 .side-navbar {
-  width: 240px;
-  height: 100%;
-  position: absolute;
-  left: -300px;
-  background-color: #100901;
-  transition: 0.5s;
+  width: 15% !important;
 }
 
 .site-container {
@@ -132,6 +144,5 @@ button.thumbnail {
   width: 25%;
 }
 .zindex {
-  /* margin: 2rem; */
   z-index: 1 !important;
 }

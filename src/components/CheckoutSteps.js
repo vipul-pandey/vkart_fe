@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
-export default function CheckoutSteps(props) {
+const CheckoutSteps = (props) => {
   return (
     <Row className="checkout-steps">
       <Col className={props.step1 ? 'active' : ''}>Sign-In</Col>
@@ -10,4 +10,6 @@ export default function CheckoutSteps(props) {
       <Col className={props.step4 ? 'active' : ''}>Place Order</Col>
     </Row>
   );
-}
+};
+
+export default CheckoutSteps;

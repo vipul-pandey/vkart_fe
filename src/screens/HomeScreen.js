@@ -3,13 +3,12 @@ import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
 import { Row, Col, Carousel, Image } from 'react-bootstrap';
 
-import Cal1 from '/home/t2b/Vkart/frontend/src/assets/cal1.webp';
-import Cal2 from '/home/t2b/Vkart/frontend/src/assets/cal2.webp';
-import Cal3 from '/home/t2b/Vkart/frontend/src/assets/cal3.webp';
+import Cal1 from '../assets/cal1.webp';
+import Cal2 from '../assets/cal2.webp';
+import Cal3 from '../assets/cal3.webp';
 import Product from '../components/Product';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-// import data from '../data';
 
 const reducer = (state, action) => {
   switch (action.type) {

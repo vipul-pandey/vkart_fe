@@ -60,7 +60,7 @@ export default function ProfileScreen() {
       toast.error(getError(err));
     }
   };
-
+  console.log('profile rendered');
   return (
     <div className="container small-container">
       <Helmet>

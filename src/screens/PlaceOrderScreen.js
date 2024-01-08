@@ -23,7 +23,7 @@ const reducer = (state, action) => {
   }
 };
 
-export default function PlaceOrderScreen() {
+const PlaceOrderScreen = () => {
   const navigate = useNavigate();
 
   const [{ loading }, dispatch] = useReducer(reducer, {
@@ -189,4 +189,5 @@ export default function PlaceOrderScreen() {
       </Row>
     </div>
   );
-}
+};
+export default PlaceOrderScreen;

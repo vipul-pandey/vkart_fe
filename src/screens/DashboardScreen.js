@@ -24,7 +24,7 @@ const reducer = (state, action) => {
       return state;
   }
 };
-export default function DashboardScreen() {
+const DashboardScreen = () => {
   const [{ loading, summary, error }, dispatch] = useReducer(reducer, {
     loading: true,
     error: '',
@@ -135,4 +135,6 @@ export default function DashboardScreen() {
       )}
     </div>
   );
-}
+};
+
+export default DashboardScreen;

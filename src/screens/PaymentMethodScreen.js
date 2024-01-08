@@ -6,7 +6,7 @@ import { Form, Button } from 'react-bootstrap';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { Store } from '../Store';
 
-export default function PaymentMethodScreen() {
+const PaymentMethodScreen = () => {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
@@ -64,4 +64,5 @@ export default function PaymentMethodScreen() {
       </div>
     </div>
   );
-}
+};
+export default PaymentMethodScreen;

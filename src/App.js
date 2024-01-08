@@ -17,9 +17,9 @@ const App = () => {
         <ToastContainer position="bottom-center" limit={1} />
         <Header />
         <main>
-          <Container className="mt-3">
+          <Container className="mainContainer">
             <Routes>
-              {routes.map((route) => {
+              {routes?.map((route) => {
                 if (route.private)
                   return (
                     <Route

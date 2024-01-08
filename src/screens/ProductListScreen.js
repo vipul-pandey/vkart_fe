@@ -51,7 +51,7 @@ const reducer = (state, action) => {
   }
 };
 
-export default function ProductListScreen() {
+const ProductListScreen = () => {
   const [
     {
       loading,
@@ -72,6 +72,8 @@ export default function ProductListScreen() {
   const { search } = useLocation();
   const sp = new URLSearchParams(search);
   const page = sp.get('page') || 1;
+
+  console.log('product image');
 
   const { state } = useContext(Store);
   const { userInfo } = state;
@@ -213,4 +215,5 @@ export default function ProductListScreen() {
       )}
     </div>
   );
-}
+};
+export default ProductListScreen;

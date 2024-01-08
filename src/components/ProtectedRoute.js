@@ -3,8 +3,8 @@ import { Navigate } from 'react-router-dom';
 
 import { Store } from '../Store';
 
-export default function ProtectedRoute({ children }) {
+export default function ProtectedRoute(children) {
   const { state } = useContext(Store);
   const { userInfo } = state;
-  return userInfo ? children : <Navigate to="/signin" />;
+  return userInfo ? <children.component /> : <Navigate to="/signin" />;
 }

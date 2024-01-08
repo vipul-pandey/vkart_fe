@@ -41,7 +41,7 @@ const reducer = (state, action) => {
   }
 };
 
-function ProductScreen() {
+const ProductScreen = () => {
   let reviewsRef = useRef();
 
   const [rating, setRating] = useState(0);
@@ -279,5 +279,5 @@ function ProductScreen() {
       </div>
     </div>
   );
-}
+};
 export default ProductScreen;

@@ -15,7 +15,7 @@ import { Store } from '../Store';
 const defaultLocation = { lat: 45.516, lng: -73.56 };
 const libs = ['places'];
 
-export default function MapScreen() {
+const MapScreen = () => {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
   const navigate = useNavigate();
@@ -124,4 +124,6 @@ export default function MapScreen() {
       </LoadScript>
     </div>
   );
-}
+};
+
+export default MapScreen;

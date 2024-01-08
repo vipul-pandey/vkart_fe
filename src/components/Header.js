@@ -2,7 +2,11 @@ import axios from 'axios';
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
+import { Image, Offcanvas } from 'react-bootstrap';
 import { toast } from 'react-toastify';
+
+import logo from '../assets/logo.png';
+
 import {
   Navbar,
   Badge,
@@ -15,6 +19,7 @@ import {
 import SearchBox from './SearchBox';
 import { Store } from '../Store';
 import { getError } from '../utils';
+const _ = require('lodash');
 
 const Header = () => {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -26,7 +31,6 @@ const Header = () => {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(`/api/products/categories`);
-        console.log('data=====>', data);
         setCategories(data);
       } catch (err) {
         toast.error(getError(err));
@@ -42,20 +46,21 @@ const Header = () => {
     localStorage.removeItem('paymentMethod');
     window.location.href = '/signin';
   };
-  console.log('sidebarIsOpen=====>', sidebarIsOpen);
   return (
     <div className="flex-column zindex">
       <header>
-        <Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar bg="light" expand="lg" fixed="top" className="p-0">
           <Container fluid style={{ maxWidth: '100%' }}>
             <Button
-              variant="dark"
+              variant="light"
               onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
             >
               <i className="fas fa-bars"></i>
             </Button>
 
-            <Navbar.Brand href="/">vkart</Navbar.Brand>
+            <Navbar.Brand clasksName="m-1" href="/">
+              <Image src={logo} width="130px" alt="logo" />
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse
               id="basic-navbar-nav"
@@ -63,22 +68,22 @@ const Header = () => {
             >
               <SearchBox />
               <Nav className="left-nav justify-content-end">
-                <Link to="/cart" className="nav-link">
+                <Nav.Link href="/cart" className="nav-item">
                   Cart
                   {cart.cartItems.length > 0 && (
                     <Badge pill bg="danger">
                       {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
                     </Badge>
                   )}
-                </Link>
+                </Nav.Link>
                 {userInfo ? (
                   <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
-                    <LinkContainer to="/profile">
-                      <NavDropdown.Item>User Profile</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/orderhistory">
-                      <NavDropdown.Item>Order History</NavDropdown.Item>
-                    </LinkContainer>
+                    <NavDropdown.Item href="/profile">
+                      User Profile
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/orderhistory">
+                      History
+                    </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <Link
                       className="dropdown-item"
@@ -93,20 +98,20 @@ const Header = () => {
                     Sign In
                   </Link>
                 )}
-                {userInfo && userInfo.isAdmin && (
+                {userInfo && !userInfo.isAdmin && (
                   <NavDropdown title="Admin" id="admin-nav-dropdown">
-                    <LinkContainer to="/admin/dashboard">
-                      <NavDropdown.Item>Dashboard</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/admin/products">
-                      <NavDropdown.Item>Products</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/admin/orders">
-                      <NavDropdown.Item>Orders</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/admin/users">
-                      <NavDropdown.Item>Users</NavDropdown.Item>
-                    </LinkContainer>
+                    <NavDropdown.Item href="/admin/dashboard">
+                      Dashboard
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/admin/products">
+                      Products
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/admin/orders">
+                      Orders
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/admin/users">
+                      Users
+                    </NavDropdown.Item>
                   </NavDropdown>
                 )}
               </Nav>
@@ -114,29 +119,29 @@ const Header = () => {
           </Container>
         </Navbar>
       </header>
-      <div
-        className={
-          sidebarIsOpen
-            ? 'active-nav side-navbar d-flex justify-content-between flex-wrap flex-column'
-            : 'side-navbar d-flex justify-content-between flex-wrap flex-column'
-        }
+
+      <Offcanvas
+        show={sidebarIsOpen}
+        onHide={() => setSidebarIsOpen(false)}
+        className="side-navbar"
       >
-        <Nav className="flex-column text-white w-100 p-2">
-          <Nav.Item>
-            <strong>Categories</strong>
-          </Nav.Item>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Categories</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
           {categories.map((category) => (
-            <Nav.Item key={category}>
+            <Nav.Item key={category} className="nav-item">
               <LinkContainer
                 to={{ pathname: '/search', search: `category=${category}` }}
                 onClick={() => setSidebarIsOpen(false)}
+                className="link-item"
               >
-                <Nav.Link>{category}</Nav.Link>
+                <Nav.Link>{_.startCase(category)}</Nav.Link>
               </LinkContainer>
             </Nav.Item>
           ))}
-        </Nav>
-      </div>
+        </Offcanvas.Body>
+      </Offcanvas>
     </div>
   );
 };

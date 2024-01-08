@@ -38,7 +38,7 @@ const reducer = (state, action) => {
       return state;
   }
 };
-export default function OrderListScreen() {
+const OrderListScreen = () => {
   const navigate = useNavigate();
   const { state } = useContext(Store);
   const { userInfo } = state;
@@ -152,4 +152,5 @@ export default function OrderListScreen() {
       )}
     </div>
   );
-}
+};
+export default OrderListScreen;

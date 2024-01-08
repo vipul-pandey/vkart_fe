@@ -7,7 +7,7 @@ import { Row, Col, ListGroup, Button, Card } from 'react-bootstrap';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
 
-export default function CartScreen() {
+const CartScreen = () => {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
@@ -124,4 +124,5 @@ export default function CartScreen() {
       </Row>
     </div>
   );
-}
+};
+export default CartScreen;

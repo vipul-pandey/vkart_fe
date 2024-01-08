@@ -8,7 +8,7 @@ import { Container, Button, Form } from 'react-bootstrap';
 import { Store } from '../Store';
 import { getError } from '../utils';
 
-export default function ForgetPasswordScreen() {
+const ForgetPasswordScreen = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -56,4 +56,6 @@ export default function ForgetPasswordScreen() {
       </Form>
     </Container>
   );
-}
+};
+
+export default ForgetPasswordScreen;

@@ -22,7 +22,7 @@ const reducer = (state, action) => {
   }
 };
 
-export default function OrderHistoryScreen() {
+const OrderHistoryScreen = () => {
   const { state } = useContext(Store);
   const { userInfo } = state;
   const navigate = useNavigate();
@@ -103,4 +103,5 @@ export default function OrderHistoryScreen() {
       )}
     </div>
   );
-}
+};
+export default OrderHistoryScreen;
